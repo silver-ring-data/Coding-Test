@@ -12,32 +12,27 @@ def solution(num):
     Returns:
         num의 짝수/홀수 여부 문자열.
     """
-    if num % 2 = 0
-        return answer = "Even"
-    elif num % 2 = 1
-        return answer = "Odd"
-    else
+    if num % 2 == 0 :
+        answer = "Even"
+    elif num % 2 == 1 :
+        answer = "Odd"
+    else :
         return 
-    print(answer)
+    return print(answer)
 
 """
 🛠️ 틀린 부분 찾아보기 (디버깅)
-1. 비교 연산자 (== vs =):
 
-파이썬에서 =는 "변수에 값을 넣을 때(대입)" 쓰고, ==는 "값이 같은지 물어볼 때(비교)" 써.
+1. return print(answer)의 함정
+**print()**는 모니터에 글자를 보여주는 '출력' 기능일 뿐이야.
 
-num % 2 == 0이라고 써야 해!
+**return**은 함수가 계산한 최종 결과를 '반환'해서 컴퓨터에게 돌려주는 거야.
 
-2. 콜론 (:) 생략:
+파이썬에서 print() 함수 자체는 아무것도 돌려주지 않아서(None), return print(answer)라고 쓰면 함수는 결국 None을 반환하게 돼. 프로그래머스는 채점할 때 이 반환값을 보거든!
 
-if, elif, else 문 끝에는 "이제 아래 내용을 실행해!"라는 의미로 반드시 :를 붙여줘야 해.
+2. else: return의 문제
+정수는 2로 나누면 나머지가 0 아니면 1밖에 없지? 그래서 사실 else까지 갈 일이 거의 없어.
 
-return의 위치:
-
-3. return answer = "Even"은 문법에 맞지 않아. 값을 바로 돌려주려면 return "Even"이라고 하거나, 변수에 먼저 담고 나중에 돌려줘야 해.
-
-도달할 수 없는 코드:
-
-4. return을 만나면 함수는 그 즉시 끝나버려. 그래서 맨 밑에 있는 print(answer)는 실행되지 않는단다.
+하지만 만약 else에 걸려서 return만 하고 아무 값도 안 써주면, 이때도 함수는 None을 돌려줘서 오답 처리가 된단다.
 """
 
