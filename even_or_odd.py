@@ -12,5 +12,11 @@ def solution(num):
     Returns:
         num의 짝수/홀수 여부 문자열.
     """
-    answer = ''
-    return answer
+    if num % 2 = 0
+        return answer = "Even"
+    elif num % 2 = 1
+        return answer = "Odd"
+    else
+        return 
+    print(answer)
+
