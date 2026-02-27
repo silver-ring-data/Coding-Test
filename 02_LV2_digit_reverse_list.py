@@ -24,7 +24,7 @@ def solution(n : int) -> list:
         answer : 숫자를 원소로 가지는 배열
     """
     n_str = str(n)
-    answer = []
+    answer = n_str[::-1]
     
     return answer
 
