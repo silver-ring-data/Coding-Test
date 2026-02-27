@@ -25,17 +25,16 @@ def solution(n : int) -> list:
     Returns:
         answer : 숫자를 원소로 가지는 배열
     """
+    if n > 10000000000 :
+        return
+        
     answer = []
     n_str = str(n)
-    list_n_str = list(n_str[::-1])
-    for i in range(len(n_str)):
-        answer[i] = list_n_str[i]
-    
+    for char in n_str[::-1]:
+        answer.append(int(char))
+        
     return answer
 
 '''
-피드백
-
-문자를 직접 꺼내오는 방식으로 설계하는 게 좋음
-지금처럼 인덱스 에러가 날 확률이 높음
+성공 
 '''
