@@ -1,9 +1,10 @@
 #https://school.programmers.co.kr/learn/courses/30/lessons/12937?language=python3
 
 def solution(num: int) -> str:
-    """
-    입력받은 정수가 짝수면 "Even", 홀수면 "Odd"를 반환한다.
-    0은 짝수로 간주하며, 음의 정수에 대해서도 동일한 규칙을 적용한다.
+    """ 정수의 홀짝 여부를 판별하여 문자열로 반환한다.
+    
+    1. 입력받은 정수가 짝수면 "Even", 홀수면 "Odd"를 반환한다.
+    2. 0은 짝수로 간주하며, 음의 정수에 대해서도 동일한 규칙을 적용한다.
 
     Args:
         num: 판별하고자 하는 정수.
