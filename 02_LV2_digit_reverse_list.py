@@ -16,6 +16,7 @@ def solution(n : int) -> list:
 
     1. n을 문자열로 변환
     2. 슬라이싱을 이용해 n의 순서를 바꾸어줌
+    3. 바꾼 순서를 배열로 다시 변환
 
     Args:
         n : 입력된 자연수
@@ -24,7 +25,7 @@ def solution(n : int) -> list:
         answer : 숫자를 원소로 가지는 배열
     """
     n_str = str(n)
-    answer = n_str[::-1]
+    answer = list(n_str[::-1])
     
     return answer
 
