@@ -17,6 +17,7 @@ def solution(n : int) -> list:
     1. n을 문자열로 변환
     2. 슬라이싱을 이용해 n의 순서를 바꾸어줌
     3. 바꾼 순서를 배열로 다시 변환
+    4. 각 요소들을 다시 int로 변환
 
     Args:
         n : 입력된 자연수
@@ -24,17 +25,17 @@ def solution(n : int) -> list:
     Returns:
         answer : 숫자를 원소로 가지는 배열
     """
+    answer = []
     n_str = str(n)
-    answer = list(n_str[::-1])
+    list_n_str = list(n_str[::-1])
+    for i in range(len(n_str)):
+        answer[i] = list_n_str[i]
     
     return answer
 
 '''
 피드백
 
-1.자료형 변환의 마법 (Type Casting):
-숫자 n을 문자열(str)로 바꾸면, 마치 리스트처럼 하나하나의 숫자에 접근하기가 무척 쉬워져. 문자열로 바꾼 뒤에 순서를 뒤집고, 다시 숫자로 바꿔서 리스트에 넣는 방법을 생각해보면 어떨까?
-
-2. 슬라이싱(Slicing) 활용하기:
-파이썬의 리스트나 문자열에는 [::-1]이라는 아주 강력한 무기가 있어. 이걸 사용하면 반복문을 복잡하게 돌리지 않고도 단 한 줄로 순서를 뒤집을 수 있단다.
+문자를 직접 꺼내오는 방식으로 설계하는 게 좋음
+지금처럼 인덱스 에러가 날 확률이 높음
 '''
