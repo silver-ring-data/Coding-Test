@@ -1,47 +1,20 @@
-def solution(s : str, skip : str, index : int) -> str:
-    """문자열을 각각 index번째 뒤의 알파벳으로 바꿔주나, 특정 알파벳은 변환하지 않고 그대로 리턴시키는 함수
-
-    1. s, skip, index에 대한 형태 작성
-    2. 문자열 s를 리스트 형태로 변환
-    3. s 리스트의 각 문자를 아스키코드로 변환
-    4. 조건문 : 
-        반복문
-        4-1. s 리스트의 문자가 skip 리스트의 문자에 해당되지 않을시
-                반복문 : 리스트의 아스키코드들을 각각 index만큼 플러스
-                조건문 : 만약 122(z)가 넘어간다면 26을 뺌 (a부터 시작)
-        4-2. s 리스트의 문자가 skip 리스트의 문자에 해당될 경우
-            pass
-    5. 문자열을 아스키코드에서 str로 변경
-    6. list(str)에서 str로 변경
-
-    Args:
-        s : 변환할 문자열
-        skip : 건들지 않을 문자열
-        index : 문자 변환 기준
-
-    Returns: 
-        answer : 변환한 결과
-    """
-    s_list = [ord(char) for char in s]
-    skip_list = [ord(char) for char in skip]
-    answer_list = []
+def solution(s: str, skip: str, index: int) -> str:
+    # 1. 사용할 수 있는 알파벳만 골라낸 '안전한 사전'을 만들기
+    # set을 활용해 skip 문자를 O(1) 속도로 필터링 (파이썬 코딩의 기술 - 효율적인 알고리즘 선택)
+    skip_set = set(skip)
+    valid_alphabets = [char for char in string.ascii_lowercase if char not in skip_set]
     
-    for s_num in s_list :
-        count = 0
-        while count < index :
-            s_num += 1
-            
-            if s_num > 122 :
-                s_num = s_num - 26
-                
-            if s_num not in skip_list:
-                count += 1
-            
-        answer_list = answer_list + [s_num]
-                
-    answer = "".join([chr(char) for char in answer_list])
-    return answer
-
-"""
-
-"""
+    # 2. 문자를 인덱스로 빠르게 찾기 위한 딕셔너리 생성 (속도 최적화)
+    char_to_idx = {char: i for i, char in enumerate(valid_alphabets)}
+    pool_size = len(valid_alphabets)
+    
+    result = []
+    for char in s:
+        # 3. 현재 문자의 위치에서 index만큼 더한 뒤, 나머지 연산(%)으로 순환 처리
+        # (파이썬 코딩의 기술 - 복잡한 식을 작은 함수나 단계로 나누기)
+        current_idx = char_to_idx[char]
+        new_idx = (current_idx + index) % pool_size
+        result.append(valid_alphabets[new_idx])
+    
+    # 4. 리스트를 문자열로 합치기
+    return "".join(result)
