@@ -27,18 +27,24 @@ def solution(s : str, skip : str, index : int) -> str:
     answer_list = []
     
     for s_num in s_list :
-        if s_num in skip_list: 
+        count = 0
+        while count < index :
+            if s_num in skip_list:
+                pass
+            else :
+                count = count + 1
+        s_num = s_num + count
+            
+        if s_num > 122 :
+            s_num = s_num - 26
             answer_list = answer_list + [s_num]
         else :
-            s_num = s_num + index
-            if s_num > 122 :
-                s_num = s_num - 26
             answer_list = answer_list + [s_num]
                 
     answer = "".join([chr(char) for char in answer_list])
     return answer
 
 """
-join() 메서드 활용해서 리스트에 추가할것
-skip의 수만큼 리스트 내의 내용이 추가되고 있음
+skip 부분의 문제를 잘못 이해함 -> 로직 수정 필요
+    while 문 안에 count를 넣기
 """
