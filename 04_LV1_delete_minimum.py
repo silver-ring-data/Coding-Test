@@ -9,25 +9,13 @@ def solution(arr):
         Returns : 
             answer : 결과로 나오는 배열
     """
-    index = 0
-    min_num = 0
+    if len(arr) <= 1: return [-1]
     
-    for num in arr :
-        if index == 0 :
-            min_num = num
+    arr.remove(min(arr))
             
-        else :
-            if num >= min_num :
-                pass
-            else :
-                min_num = num
-        index = index + 1
-    
-    arr.remove(min_num)
-                
-    return arr if arr != [] else [-1]
+    return arr
 """
-파이썬 리스트의 remove()는 리스트 자체를 **'수정'**하는 일을 하지만, 수정된 리스트를 우리에게 다시 **'전달(return)'**해주지는 않아.
-    my_list.remove(2)를 실행하면: my_list라는 변수가 가리키는 실제 데이터 바구니에서 2가 사라짐. (성공!)
-    result = my_list.remove(2)라고 쓰면: remove는 아무것도 반환하지 않기 때문에 result에는 None이 들어감. (함정!)
+로직 심플하게 만들기 : min() 사용
+가드 절(Guard Clauses) 활용 : 어차피 원소가 1개이면 바로 -1를 리턴하면 됨.
+    
 """
