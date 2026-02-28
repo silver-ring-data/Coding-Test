@@ -29,22 +29,19 @@ def solution(s : str, skip : str, index : int) -> str:
     for s_num in s_list :
         count = 0
         while count < index :
-            if s_num in skip_list:
-                pass
-            else :
-                count = count + 1
-        s_num = s_num + count
+            s_num += 1
             
-        if s_num > 122 :
-            s_num = s_num - 26
-            answer_list = answer_list + [s_num]
-        else :
-            answer_list = answer_list + [s_num]
+            if s_num > 122 :
+                s_num = s_num - 26
+                
+            if s_num not in skip_list:
+                count += 1
+            
+        answer_list = answer_list + [s_num]
                 
     answer = "".join([chr(char) for char in answer_list])
     return answer
 
 """
-skip 부분의 문제를 잘못 이해함 -> 로직 수정 필요
-    while 문 안에 count를 넣기
+
 """
