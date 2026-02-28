@@ -27,18 +27,18 @@ def solution(s : str, skip : str, index : int) -> str:
     answer_list = []
     
     for s_num in s_list :
-        for skip_num in skip_list : 
-            if s_num == skip_num : 
-                answer_list = answer_list + [s_num]
-            else :
-                s_num = s_num + index
-                if s_num > 122 :
-                    s_num = s_num - 26
-                answer_list = answer_list + [s_num]
+        if s_num in skip_list: 
+            answer_list = answer_list + [s_num]
+        else :
+            s_num = s_num + index
+            if s_num > 122 :
+                s_num = s_num - 26
+            answer_list = answer_list + [s_num]
                 
-    answer = str([chr(char) for char in answer_list])
+    answer = "".join([chr(char) for char in answer_list])
     return answer
 
 """
-
+join() 메서드 활용해서 리스트에 추가할것
+skip의 수만큼 리스트 내의 내용이 추가되고 있음
 """
