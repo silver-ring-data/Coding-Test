@@ -19,7 +19,7 @@ def solution(nums) :
     
     for sum_num in sums :
         dividend = sum_num - 1 # 소수를 판별할 나누는 수 정의.
-        while dividend == 2 :    # 2까지만 나누기
+        while dividend >= 2 :    # 2까지만 나누기
             if sum_num % dividend == 0 : # 소수가 아님
                 count_not_prime = count_not_prime + 1 # 소수가 아니면 카운트
                 break
@@ -28,7 +28,5 @@ def solution(nums) :
     answer = count_sums - count_not_prime # 전체 - 소수가 아닌 경우
     return answer
 """
-combinations
-sum()
-len()
+while 문의 버그 while dividend == 2 :는 2일때만 작동
 """
