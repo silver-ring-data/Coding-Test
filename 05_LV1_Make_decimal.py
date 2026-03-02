@@ -1,20 +1,7 @@
 from itertools import combinations
 
 def solution(nums) :
-    """
-    1. (반복문) 배열(nums)에서 값 3개(num)를 선택
-        1-1. 값 3개를 더한 값(sum_num)이 소수인지를 판별
-            1-1-1. (반복문) sum_num을 sum_num-1부터 2까지 1씩 내려가면서 차례대로 나눔
-                만약에 나눈 값이 자연수일 경우, 소수이므로 카운트를 더함
-    Args:
-        nums : 입력된 배열
-    Returns:
-        return : 소수가 되는 경우의 개수
-    """
-
-    
     sums = [sum(c) for c in combinations(nums, 3)] # 3개의 값을 더한 리스트
-
     return sum(1 for s in sums if is_prime(s))
 
 def is_prime(n) :
@@ -23,8 +10,18 @@ def is_prime(n) :
     for dividend in range(2, n**0.5 + 1) :
         if n % dividend == 0 :
             return False
+            
     return True
-        
+"""
+    1. (반복문) 배열(nums)에서 값 3개(num)를 선택
+        1-1. 값 3개를 더한 값이 소수인지를 판별
+            1-1-1. 값을 나누는 수를 제곱근까지 1씩 더해서 나누어보고 
+                만약에 나눈 값이 자연수일 경우, 소수이므로 카운트를 더함
+    Args:
+        nums : 입력된 배열
+    Returns:
+        return : 소수가 되는 경우의 개수
+"""
     
     
 """
