@@ -1,32 +1,70 @@
-# PCCP-Study
+# Coding Test
 
-- 파일 이름 : **일자_레벨_문제 (**ex. 02_LV1_digit_reverse_list.py**)**
-    - ex. 02_LV1_digit_reverse_list.py
-- 파일 내용 : **코드내용 (함수정의 → Docstring → 코드 (주석)) → 피드백 내용 주석**
-    - Docstring : (1) 요약 한 줄 → (2) 알고리즘 설명 → (3) 인자 설명 → (4) 반환값 설명
-        - 예시
-            
-            ```python
-            def calculate_area(radius):
-                """원공의 넓이를 계산하여 반환함.  # (1) 요약 한 줄
-            
-                반지름 값을 받아 수학적 공식을 적용해 넓이를 구함. # (2) 상세 설명 (선택)
-            
-                Args: # (3) 인자 설명
-                    radius (float): 원의 반지름 (양수여야 함).
-            
-                Returns: # (4) 반환값 설명
-                    float: 계산된 원의 넓이.
-                """
-                import math
-                return math.pi * (radius ** 2)
-            ```
-            
-    - 단순 설명보다, **왜 이 방식을 선택**했는지
-        - 예시
-            
-            ```python
-            def solution(priorities: list[int], location: int) -> int:
-                # ❌ 나쁜 주석: "큐에 데이터를 넣는다" (코드를 읽으면 알 수 있는 내용)
-                # ✅ 좋은 주석: "인덱스 관리를 위해 enumerate를 사용해 (우선순위, 위치) 튜플 생성"
-            ```
+프로그래머스·백준 문제 풀이 기록. 정답 코드만이 아니라 **왜 이 방식을 선택했는지**를
+Docstring과 주석으로 함께 남기는 것을 목표로 한다. (PCCP 자격증 대비)
+
+## 디렉터리 구조
+
+폴더는 [프로그래머스 코딩테스트 고득점 Kit](https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)의
+유형 분류를 그대로 따른다. 번호도 Kit의 순서를 유지하므로, 비어 있는 번호는 아직 풀지 않은
+유형을 뜻한다. 폴더 안에서는 푼 순서(일자)대로 정렬된다.
+
+| 폴더 | Kit 유형 | 문제 수 | 주요 개념 |
+| --- | --- | --- | --- |
+| [00_python_basics/](00_python_basics/) | *(Kit 외)* 파이썬 문법 연습 | 3 | 파일 입출력, 정규식, `map`/`lambda` |
+| [01_hash/](01_hash/) | 해시 | 7 | `dict`, `set`, `collections.Counter` |
+| [02_stack_queue/](02_stack_queue/) | 스택/큐 | 11 | `list` 스택, `collections.deque`, 연결 리스트 |
+| — | 힙(Heap) | 0 | 미학습 |
+| [04_sort/](04_sort/) | 정렬 | 1 | 다중 키 정렬(`key=lambda`) |
+| [05_brute_force/](05_brute_force/) | 완전탐색 | 3 | `itertools.combinations`, 이중 반복문 |
+| [06_greedy/](06_greedy/) | 탐욕법(Greedy) | 1 | 지역 최적 선택 |
+| — | 동적계획법(DP) | 0 | 미학습 |
+| [08_dfs_bfs/](08_dfs_bfs/) | 깊이/너비 우선 탐색 | 5 | DFS/BFS, 트리 순회, 부모 포인터 |
+| — | 이분탐색 | 0 | 미학습 |
+| — | 그래프 | 0 | 미학습 |
+| [99_practice/](99_practice/) | *(Kit 외)* 연습문제 | 9 | 문자열·배열 기초, 구현, 시뮬레이션 |
+
+Kit에 대응하는 유형이 없는 문제는 `99_practice/`에 모은다. 프로그래머스에서 「연습문제」로
+분류되는 기초 문제와 구현·시뮬레이션 문제가 여기에 해당한다.
+
+## 파일 규칙
+
+### 파일 이름
+
+`일자_문제이름.py` 형식을 사용한다. 유형은 폴더로 구분하므로 파일 이름에는 넣지 않는다.
+
+```
+01_hash/27_number_pair.py   # 27일차에 푼 「숫자 짝꿍」
+```
+
+### 파일 내용
+
+`함수 정의 → Docstring → 코드(주석) → 피드백 주석` 순서로 작성한다.
+
+Docstring은 (1) 요약 한 줄 → (2) 알고리즘 설명 → (3) 인자 설명 → (4) 반환값 설명으로 구성한다.
+
+```python
+def calculate_area(radius):
+    """원의 넓이를 계산하여 반환한다.          # (1) 요약 한 줄
+
+    반지름 값을 받아 수학 공식을 적용해 넓이를 구한다.  # (2) 상세 설명 (선택)
+
+    Args:                                      # (3) 인자 설명
+        radius (float): 원의 반지름 (양수여야 한다).
+
+    Returns:                                   # (4) 반환값 설명
+        float: 계산된 원의 넓이.
+    """
+    import math
+    return math.pi * (radius ** 2)
+```
+
+### 주석
+
+코드를 읽으면 알 수 있는 내용 대신, **그 방식을 선택한 이유**를 남긴다.
+
+```python
+def solution(priorities: list[int], location: int) -> int:
+    # 나쁜 주석: "큐에 데이터를 넣는다"        (코드를 읽으면 알 수 있는 내용)
+    # 좋은 주석: "인덱스 관리를 위해 enumerate로 (우선순위, 위치) 튜플 생성"
+```
