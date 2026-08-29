@@ -3,6 +3,9 @@
 프로그래머스·백준 문제 풀이 기록. 정답 코드만이 아니라 **왜 이 방식을 선택했는지**를
 Docstring과 주석으로 함께 남기는 것을 목표로 한다. (PCCP 자격증 대비)
 
+풀이 일정은 [STUDY_PLAN.md](STUDY_PLAN.md) 에 있다. 2026-08-31부터 주중 하루 한 문제씩
+22주(110문제) 분량이며, 이미 푼 문제는 제외했다.
+
 ## 디렉터리 구조
 
 폴더는 [프로그래머스 코딩테스트 고득점 Kit](https://school.programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)의
