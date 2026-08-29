@@ -1,0 +1,47 @@
+def function(logs : list[str]) -> float:
+  success_times = []
+  for log in logs :
+    chars = log.split(']')
+
+    status, time = chars[-1].split(':')
+    
+    if status == "SUCCESS" :
+      success_times.append(float(time))
+
+
+  result = sum(num for num in success_times)
+  return result
+
+logs = ["[LOAD]SUCCESS:1.2", "[PUNCH]FAIL:0.5", "[TRANS]SUCCESS:0.8"]
+function(logs)
+
+# --------------------------------------------------------------------------
+# 풀이 메모 — gist 코멘트에서 옮겨온 기록이다 (2026-08-29 이관).
+# 문제를 풀며 남긴 시행착오이므로 당시 문장을 그대로 둔다.
+# 원본: https://gist.github.com/silver-ring-data/ff8c598e429674417520c0859c793498
+#
+# [2026-03-03]
+# 변수 초기화 실수: success_times = list[int]라고 쓰면 정수 리스트 타입이라는 '힌트'일 뿐, 실제 비어있는 리스트 객체가 생성되지 않아. 실제 생성을 위해서는 success_times = [] 또는 success_times = list()라고 써야 해.
+#
+# 문자열 분해 결과 미저장: chars.split(']')을 호출만 하고 결과를 변수에 담지 않았어. 문자열은 수정 불가능(Immutable)이라서 반드시 split_list = chars.split(']') 처럼 결과값을 새 변수에 할당해야 해.
+#
+# 인덱싱 접근 오류: chars[2]는 문자열 chars의 세 번째 글자 하나만 가져와. 우리가 원하는 건 '1.2' 같은 숫자 덩어리이므로 split된 리스트의 인덱스로 접근해야 해.
+#
+# 타입 변환 오류: 문제에서 시간은 1.2 같은 실수 형태야. int()가 아니라 float()로 변환해야 소수점 계산이 가능해. 마지막에 str로 반환하라고 했으니 str()로 다시 감싸줘야겠지?
+#
+# [2026-03-03]
+# 리스트와 문자열의 혼동 (chars_1.split):
+#
+# chars_1은 chars.split(']')의 결과물인 리스트야. (예: ['[LOAD', 'SUCCESS:1.2'])
+#
+# 리스트 객체에는 .split()이라는 함수가 없어. .split()은 오직 **문자열(str)**에만 쓸 수 있거든. 그래서 여기서 AttributeError가 발생해.
+#
+# 제너레이터 객체가 추가됨 (append(...)):
+#
+# success_times.append(float(...) for ...)라고 쓰면, 계산된 숫자가 들어가는 게 아니라 **'제너레이터 객체'**라는 복잡한 덩어리가 리스트에 담겨.
+#
+# 우리가 원하는 건 단순한 float 숫자니까, 리스트 내부에서 if문을 써서 숫자를 골라내거나 별도의 if문을 밖으로 빼야 해.
+#
+# [2026-03-03]
+# chars.split(':') 부분에서 다시 에러가 날 거야. 이유는 이전 답변에서 말한 것과 같아. chars는 log.split(']')의 결과물인 리스트(['[LOAD', 'SUCCESS:1.2'])이기 때문이지. 리스트에는 split 기능이 없어서 **"리스트의 몇 번째 방(인덱스)에 있는 문자열을 쪼갤 것인지"**를 명시해줘야 해.
+# --------------------------------------------------------------------------
