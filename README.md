@@ -18,7 +18,7 @@ Docstring과 주석으로 함께 남기는 것을 목표로 한다. (PCCP 자격
 | [01_hash/](01_hash/) | 해시 | 8 | `dict`, `set`, `collections.Counter` |
 | [02_stack_queue/](02_stack_queue/) | 스택/큐 | 11 | `list` 스택, `collections.deque`, 연결 리스트 |
 | — | 힙(Heap) | 0 | 미학습 |
-| [04_sort/](04_sort/) | 정렬 | 1 | 다중 키 정렬(`key=lambda`) |
+| [04_sort/](04_sort/) | 정렬 | 3 | 다중 키 정렬(`key=lambda`), 슬라이스 후 정렬, 정렬 후 순위 비교 |
 | [05_brute_force/](05_brute_force/) | 완전탐색 | 3 | `itertools.combinations`, 이중 반복문 |
 | [06_greedy/](06_greedy/) | 탐욕법(Greedy) | 1 | 지역 최적 선택 |
 | — | 동적계획법(DP) | 0 | 미학습 |
